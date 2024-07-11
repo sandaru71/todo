@@ -27,7 +27,7 @@ export default function Home() {
     };
 
     fetchPosts();
-  }, [axiosPrivate]);
+  }, []);
 
   if (isLoading) {
     return <div>Loading...</div>;

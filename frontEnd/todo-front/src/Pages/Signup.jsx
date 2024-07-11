@@ -92,13 +92,12 @@ export default function Signup() {
         }
       );
 
-      const token = res?.data?.token;
-      const username = res?.data?.username;
-
-      setAuth({ user: username, token: token });
-
       console.log(response.data);
-      setSuccess(true);
+      v;
+      // const token = res?.data?.token;
+      // const username = res?.data?.username;
+
+      // setAuth({ user: username, token: token });
 
       setUser("");
       setEmail("");
