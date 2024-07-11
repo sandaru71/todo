@@ -52,8 +52,8 @@ export const getTodoById = async (req, res) => {
 
 // SHOW TODOS FOR A SINGLE USER
 export const getTodosByUserId = async (req, res) => {
-  const userId = req.user;
-
+  const userId = req.userId;
+  // console.log(userId);
   try {
     const todos = await getTodosByUserIdService(userId);
     return res.status(200).json({ data: todos });

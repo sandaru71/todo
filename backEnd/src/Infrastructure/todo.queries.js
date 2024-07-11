@@ -19,7 +19,8 @@ export const createTodoQuery = async (task, userId) => {
   }
 };
 export const getTodosByUserIdQuery = async (userId) => {
-  return prisma.todo.findMany({
+  console.log(userId);
+  return prisma.todolist.findMany({
     where: {
       userId: userId,
     },
