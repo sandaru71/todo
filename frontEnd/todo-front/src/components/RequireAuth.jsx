@@ -18,5 +18,5 @@ export default function RequireAuth() {
   if (auth?.token) {
     return <Outlet />;
   }
-  return <Navigate to="/signup" replace />;
+  return <Navigate to="/" replace />;
 }

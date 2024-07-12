@@ -3,13 +3,14 @@ import "./TodoList.css";
 import TodoItem from "./TodoItem";
 import SnackBar from "./SnackBar";
 import { useSortTodos } from "../hooks/SortTodos.jsx";
-import { axiosPrivate } from "../../api/axios.js";
+import useAxiosPrivate from "../hooks/useAxiosPrivate.jsx";
 // import useTodoContext from "../hooks/useTodoContext.jsx";
 
 const API_BASE = "http://localhost:3008";
 
 export default function TodoList() {
   const { sortTodos } = useSortTodos();
+  const axiosPrivate = useAxiosPrivate();
 
   const [todos, setTodos] = useState([]);
   // const { todos, setTodos } = useTodoContext();
@@ -43,7 +44,7 @@ export default function TodoList() {
   const GetTodos = async () => {
     try {
       const response = await axiosPrivate.get("/todos/user");
-      const data = await response.data;
+      const data = response.data.data;
       const sortedTodos = sortTodos(data); // Sort todos
       setTodos(sortedTodos);
       console.log(data);
@@ -82,7 +83,9 @@ export default function TodoList() {
 
   const addTodo = async () => {
     try {
-      const response = await axiosPrivate.post("/todos/createTodo", newTodo);
+      const response = await axiosPrivate.post("/todos/createTodo", {
+        task: newTodo,
+      });
 
       const data = await response.data;
       const updatedTodos = sortTodos([...todos, data]); // Sort and update todos
