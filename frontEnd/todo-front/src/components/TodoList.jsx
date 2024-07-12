@@ -4,7 +4,6 @@ import TodoItem from "./TodoItem";
 import SnackBar from "./SnackBar";
 import { useSortTodos } from "../hooks/SortTodos.jsx";
 import useAxiosPrivate from "../hooks/useAxiosPrivate.jsx";
-// import useTodoContext from "../hooks/useTodoContext.jsx";
 
 const API_BASE = "http://localhost:3008";
 
@@ -13,7 +12,6 @@ export default function TodoList() {
   const axiosPrivate = useAxiosPrivate();
 
   const [todos, setTodos] = useState([]);
-  // const { todos, setTodos } = useTodoContext();
   const [newTodo, setNewTodo] = useState("");
   const [openSnackBar, setOpenSnackBar] = useState(false);
   const [snackBarSeverity, setSnackBarSeverity] = useState("success");
@@ -30,17 +28,6 @@ export default function TodoList() {
     setOpenSnackBar(false);
   };
 
-  // const GetTodos = () => {
-  //   fetch(API_BASE + "/api/todos")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       const sortedTodos = sortTodos(data); // Sort todos
-  //       setTodos(sortedTodos);
-  //       console.log(data);
-  //     })
-  //     .catch((err) => console.error("Error: ", err));
-  // };
-
   const GetTodos = async () => {
     try {
       const response = await axiosPrivate.get("/todos/user");
@@ -52,34 +39,6 @@ export default function TodoList() {
       console.error("Error fetching todos: ", error);
     }
   };
-
-  // const addTodo = async () => {
-  //   try {
-  //     const response = await fetch(`${API_BASE}/api/createTodo`, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         task: newTodo,
-  //       }),
-  //     });
-
-  //     if (!response.ok) {
-  //       throw new Error("Failed to add todo");
-  //     }
-
-  //     const data = await response.json();
-  //     const updatedTodos = sortTodos([...todos, data]); // Sort and update todos
-  //     setTodos(updatedTodos);
-  //     setNewTodo("");
-  //     setOpenSnackBar(true);
-  //     setSnackBarSeverity("success");
-  //     setSnackBarMessage("New Todo Item added successfully!");
-  //   } catch (error) {
-  //     console.error("Error adding todo:", error);
-  //   }
-  // };
 
   const addTodo = async () => {
     try {
@@ -110,33 +69,6 @@ export default function TodoList() {
       console.error("Error deleting todo:", error);
     }
   };
-
-  // const updateTodo = async (id, status) => {
-  //   try {
-  //     const url = `${API_BASE}/api/updateTodo/${id}`;
-  //     const response = await fetch(url, {
-  //       method: "PATCH",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({ status }),
-  //     });
-
-  //     if (!response.ok) {
-  //       throw new Error("Failed to update todo");
-  //     }
-
-  //     const updatedTodo = await response.json();
-  //     setTodos((prev) => {
-  //       const filteredTodos = prev.filter((t) => t.id !== id);
-  //       const updatedTodos = [...filteredTodos, updatedTodo];
-  //       const sortedTodos = sortTodos(updatedTodos);
-  //       return sortedTodos;
-  //     });
-  //   } catch (error) {
-  //     console.error("Error updating todo:", error);
-  //   }
-  // };
 
   const updateTodo = async (id, status) => {
     try {

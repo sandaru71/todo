@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "./components/Header";
-import TodoList from "./components/TodoList";
 import Home from "./Pages/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Signup from "./Pages/Signup";
@@ -23,18 +21,4 @@ export default function App() {
       </Routes>
     </main>
   );
-}
-
-{
-  /* we want to protect these routes */
-}
-{
-  /* <Route
-  path="home"
-  element={
-    <RequireAuth>
-      <Home />
-    </RequireAuth>
-  }
-/> */
 }

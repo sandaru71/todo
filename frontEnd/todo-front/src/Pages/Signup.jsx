@@ -98,11 +98,6 @@ export default function Signup() {
 
       setIsSignUpActive(false);
 
-      // const token = res?.data?.token;
-      // const username = res?.data?.username;
-
-      // setAuth({ user: username, token: token });
-
       setUser("");
       setEmail("");
       setPwd("");
@@ -137,13 +132,6 @@ export default function Signup() {
       );
 
       console.log(response.data);
-
-      // const token = res?.data?.token;
-      // const username = res?.data?.username;
-
-      // setAuth({ user: username, token: token });
-
-      // const { token, username } = response.data;
 
       const { token } = response.data;
 
