@@ -4,15 +4,15 @@ import TodoItem from "./TodoItem";
 import SnackBar from "./SnackBar";
 import { useSortTodos } from "../hooks/SortTodos.jsx";
 import { axiosPrivate } from "../../api/axios.js";
-import useTodoContext from "../hooks/useTodoContext.jsx";
+// import useTodoContext from "../hooks/useTodoContext.jsx";
 
 const API_BASE = "http://localhost:3008";
 
 export default function TodoList() {
   const { sortTodos } = useSortTodos();
 
-  // const [todos, setTodos] = useState([]);
-  const { todos, setTodos } = useTodoContext();
+  const [todos, setTodos] = useState([]);
+  // const { todos, setTodos } = useTodoContext();
   const [newTodo, setNewTodo] = useState("");
   const [openSnackBar, setOpenSnackBar] = useState(false);
   const [snackBarSeverity, setSnackBarSeverity] = useState("success");
@@ -42,7 +42,7 @@ export default function TodoList() {
 
   const GetTodos = async () => {
     try {
-      const response = await axiosPrivate.get("/api/todos");
+      const response = await axiosPrivate.get("/todos/user");
       const data = await response.data;
       const sortedTodos = sortTodos(data); // Sort todos
       setTodos(sortedTodos);
@@ -82,7 +82,7 @@ export default function TodoList() {
 
   const addTodo = async () => {
     try {
-      const response = await axiosPrivate.post("/api/createTodo", newTodo);
+      const response = await axiosPrivate.post("/todos/createTodo", newTodo);
 
       const data = await response.data;
       const updatedTodos = sortTodos([...todos, data]); // Sort and update todos
@@ -98,7 +98,7 @@ export default function TodoList() {
 
   const deleteTodo = async (id) => {
     try {
-      await axiosPrivate.delete("/api/deleteTodo/" + id);
+      await axiosPrivate.delete("/todos/deleteTodo/" + id);
       setTodos((prev) => prev.filter((todo) => todo.id !== id));
       setSnackBarSeverity("error");
       setSnackBarMessage("Todo Item deleted!");
@@ -137,7 +137,7 @@ export default function TodoList() {
 
   const updateTodo = async (id, status) => {
     try {
-      const url = "/api/updateTodo/" + id;
+      const url = "/todos/updateTodo/" + id;
       const response = await axiosPrivate.patch(url, { status });
 
       const updatedTodo = response.data;

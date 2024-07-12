@@ -11,7 +11,9 @@ const SIGNUP_URL = "/users/signup";
 const SIGNIN_URL = "/users/signin";
 
 export default function Signup() {
-  const { setAuth } = useAuth();
+  const { setAuth, auth } = useAuth();
+
+  console.log("auth before", auth);
 
   const navigate = useNavigate();
 
@@ -93,7 +95,9 @@ export default function Signup() {
       );
 
       console.log(response.data);
-      v;
+
+      setIsSignUpActive(false);
+
       // const token = res?.data?.token;
       // const username = res?.data?.username;
 
@@ -144,6 +148,8 @@ export default function Signup() {
       const { token } = response.data;
 
       setAuth({ token });
+
+      console.log("auth after", auth);
 
       setSuccess(true);
       setEmail("");
@@ -252,6 +258,7 @@ export default function Signup() {
           </button>
         </form>
       </div>
+
       <div className="form-container sign-in-container">
         <form onSubmit={handleSignIn}>
           <h1>Sign in</h1>
@@ -287,6 +294,7 @@ export default function Signup() {
           <button>Sign In</button>
         </form>
       </div>
+
       <div className="overlay-container">
         <div className="overlay">
           <div className="overlay-panel overlay-left">

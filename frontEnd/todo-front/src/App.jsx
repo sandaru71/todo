@@ -18,17 +18,25 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route path="signup" element={<Signup />} />
           <Route path="signin" element={<Signup />} />
-          {/* we want to protect these routes */}
-          <Route
-            path="home"
-            element={
-              <RequireAuth>
-                <Home />
-              </RequireAuth>
-            }
-          />
+        </Route>
+        <Route element={<RequireAuth />}>
+          <Route path="/home" element={<Home />} />
         </Route>
       </Routes>
     </main>
   );
+}
+
+{
+  /* we want to protect these routes */
+}
+{
+  /* <Route
+  path="home"
+  element={
+    <RequireAuth>
+      <Home />
+    </RequireAuth>
+  }
+/> */
 }
