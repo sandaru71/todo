@@ -1,5 +1,4 @@
 import express from "express";
-import mysql2 from "mysql2";
 import "dotenv/config";
 import morgan from "morgan";
 import bodyParser from "body-parser";
@@ -16,10 +15,6 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-//app.use(express.json());
-
-import todos from "./src/Routes/todo.routes.js";
-
 //middleware
 app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "5mb" }));
@@ -29,8 +24,6 @@ app.use(
     extended: true,
   })
 );
-
-// app.use(cors());
 
 app.get("/", (req, res, next) => {
   res.send("Hello World!");

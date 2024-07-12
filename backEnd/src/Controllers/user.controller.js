@@ -1,5 +1,3 @@
-import genSaltSync from "bcrypt";
-import hashSync from "bcrypt";
 import { compareSync } from "bcrypt";
 import {
   getUserByEmailService,
@@ -97,5 +95,3 @@ export const signIn = async (req, res) => {
     });
   }
 };
-
-// export default { signUp, signIn };

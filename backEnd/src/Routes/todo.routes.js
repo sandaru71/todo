@@ -11,10 +11,6 @@ import { verifyJWT } from "../Middleware/verifyJWT.js";
 
 const router = express.Router();
 
-// Database routes
-// router.get('/create-database', createDatabase);
-// router.get('/create-table', createTable);
-
 // Todo routes
 router.get("/user", verifyJWT, getTodosByUserId);
 router.post("/createTodo", verifyJWT, createTodo);
