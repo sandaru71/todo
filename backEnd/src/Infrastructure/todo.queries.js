@@ -1,9 +1,9 @@
-import { PrismaClient } from "@prisma/client";
-import { v4 as uuidv4 } from "uuid";
+const { PrismaClient } = require("@prisma/client");
+const { v4: uuidv4 } = require("uuid");
 
 const prisma = new PrismaClient();
 
-export const createTodoQuery = async (task, userId) => {
+const createTodoQuery = async (task, userId) => {
   try {
     const newList = await prisma.todolist.create({
       data: {
@@ -18,16 +18,21 @@ export const createTodoQuery = async (task, userId) => {
     throw new Error("Internal Server Error");
   }
 };
-export const getTodosByUserIdQuery = async (userId) => {
-  console.log(userId);
-  return prisma.todolist.findMany({
-    where: {
-      userId: userId,
-    },
-  });
+
+const getTodosByUserIdQuery = async (userId) => {
+  try {
+    const todos = await prisma.todolist.findMany({
+      where: {
+        userId: userId,
+      },
+    });
+    return todos;
+  } catch (error) {
+    throw new Error("Internal Server Error");
+  }
 };
 
-export const getTodosQuery = async () => {
+const getTodosQuery = async () => {
   try {
     const todos = await prisma.todolist.findMany();
     return todos;
@@ -36,7 +41,7 @@ export const getTodosQuery = async () => {
   }
 };
 
-export const getTodoByIdQuery = async (id) => {
+const getTodoByIdQuery = async (id) => {
   try {
     const todo = await prisma.todolist.findUnique({
       where: {
@@ -49,7 +54,7 @@ export const getTodoByIdQuery = async (id) => {
   }
 };
 
-export const updateTodoQuery = async (id, status) => {
+const updateTodoQuery = async (id, status) => {
   try {
     const updatedTodo = await prisma.todolist.update({
       where: {
@@ -66,7 +71,7 @@ export const updateTodoQuery = async (id, status) => {
   }
 };
 
-export const deleteTodoQuery = async (id) => {
+const deleteTodoQuery = async (id) => {
   try {
     await prisma.todolist.delete({
       where: {
@@ -77,4 +82,13 @@ export const deleteTodoQuery = async (id) => {
   } catch (error) {
     throw new Error("Internal Server Error");
   }
+};
+
+module.exports = {
+  createTodoQuery,
+  getTodosByUserIdQuery,
+  getTodosQuery,
+  getTodoByIdQuery,
+  updateTodoQuery,
+  deleteTodoQuery,
 };

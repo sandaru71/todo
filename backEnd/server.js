@@ -1,10 +1,10 @@
-import express from "express";
-import "dotenv/config";
-import morgan from "morgan";
-import bodyParser from "body-parser";
-import cors from "cors";
-import userRouter from "./src/Routes/user.routes.js";
-import todoRouter from "./src/Routes/todo.routes.js";
+const express = require("express");
+require("dotenv/config");
+const morgan = require("morgan");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const userRouter = require("./src/Routes/user.routes.js");
+const todoRouter = require("./src/Routes/todo.routes.js");
 
 const app = express();
 
@@ -15,7 +15,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-//middleware
+// Middleware
 app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "5mb" }));
 app.use(
@@ -25,6 +25,7 @@ app.use(
   })
 );
 
+// Routes
 app.get("/", (req, res, next) => {
   res.send("Hello World!");
 });
@@ -32,9 +33,9 @@ app.get("/", (req, res, next) => {
 app.use("/users", userRouter);
 app.use("/todos", todoRouter);
 
-//PORT
+// Port
 const port = process.env.APP_PORT;
 
 app.listen(port, () => {
-  console.log(`server started on port ${port}`);
+  console.log(`Server started on port ${port}`);
 });

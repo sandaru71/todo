@@ -1,13 +1,13 @@
-import express from "express";
-import {
+const express = require("express");
+const {
   createTodo,
   getTodos,
   getTodoById,
   updateTodo,
   deleteTodo,
   getTodosByUserId,
-} from "../Controllers/todo.controller.js";
-import { verifyJWT } from "../Middleware/verifyJWT.js";
+} = require("../Controllers/todo.controller.js");
+const { verifyJWT } = require("../Middleware/verifyJWT.js");
 
 const router = express.Router();
 
@@ -19,4 +19,4 @@ router.get("/todos/:id", verifyJWT, getTodoById);
 router.patch("/updateTodo/:id", verifyJWT, updateTodo);
 router.delete("/deleteTodo/:id", verifyJWT, deleteTodo);
 
-export default router;
+module.exports = router;

@@ -1,14 +1,14 @@
-import {
+const {
   signupQuery,
   getUserByUserIdQuery,
   getUserByEmailQuery,
-} from "../Infrastructure/user.queries.js";
-import { genSaltSync, hashSync, compareSync } from "bcrypt";
+} = require("../Infrastructure/user.queries.js");
+const bcrypt = require("bcrypt");
 
-export const signUpService = async (email, name, password) => {
+const signUpService = async (email, name, password) => {
   try {
-    const salt = genSaltSync(10);
-    const hashedPassword = hashSync(password, salt);
+    const salt = bcrypt.genSaltSync(10);
+    const hashedPassword = bcrypt.hashSync(password, salt);
 
     const newUser = await signupQuery(email, name, hashedPassword);
     return newUser;
@@ -17,7 +17,7 @@ export const signUpService = async (email, name, password) => {
   }
 };
 
-export const getUserByUserIdService = async (userId) => {
+const getUserByUserIdService = async (userId) => {
   try {
     const users = await getUserByUserIdQuery(userId);
     return users;
@@ -26,11 +26,17 @@ export const getUserByUserIdService = async (userId) => {
   }
 };
 
-export const getUserByEmailService = async (email) => {
+const getUserByEmailService = async (email) => {
   try {
     const user = await getUserByEmailQuery(email);
     return user;
   } catch (error) {
     throw error;
   }
+};
+
+module.exports = {
+  signUpService,
+  getUserByUserIdService,
+  getUserByEmailService,
 };

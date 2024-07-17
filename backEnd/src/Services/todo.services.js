@@ -1,13 +1,13 @@
-import {
+const {
   createTodoQuery,
   getTodosQuery,
   getTodosByUserIdQuery,
   getTodoByIdQuery,
   updateTodoQuery,
   deleteTodoQuery,
-} from "../Infrastructure/todo.queries.js";
+} = require("../Infrastructure/todo.queries.js");
 
-export const createTodoService = async (task, userId) => {
+const createTodoService = async (task, userId) => {
   try {
     const newList = await createTodoQuery(task, userId);
     return newList;
@@ -16,7 +16,7 @@ export const createTodoService = async (task, userId) => {
   }
 };
 
-export const getTodosService = async () => {
+const getTodosService = async () => {
   try {
     const todos = await getTodosQuery();
     return todos;
@@ -25,7 +25,7 @@ export const getTodosService = async () => {
   }
 };
 
-export const getTodoByIdService = async (id) => {
+const getTodoByIdService = async (id) => {
   try {
     const todo = await getTodoByIdQuery(id);
     return todo;
@@ -34,7 +34,7 @@ export const getTodoByIdService = async (id) => {
   }
 };
 
-export const getTodosByUserIdService = async (userId) => {
+const getTodosByUserIdService = async (userId) => {
   try {
     const todos = await getTodosByUserIdQuery(userId);
     return todos;
@@ -44,7 +44,7 @@ export const getTodosByUserIdService = async (userId) => {
   }
 };
 
-export const updateTodoService = async (id, status) => {
+const updateTodoService = async (id, status) => {
   try {
     const updatedTodo = await updateTodoQuery(id, status);
     return updatedTodo;
@@ -53,11 +53,20 @@ export const updateTodoService = async (id, status) => {
   }
 };
 
-export const deleteTodoService = async (id) => {
+const deleteTodoService = async (id) => {
   try {
     await deleteTodoQuery(id);
     return { data: "Todo deleted" };
   } catch (error) {
     throw error;
   }
+};
+
+module.exports = {
+  createTodoService,
+  getTodosService,
+  getTodoByIdService,
+  getTodosByUserIdService,
+  updateTodoService,
+  deleteTodoService,
 };

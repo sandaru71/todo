@@ -1,15 +1,15 @@
-import { getUserByUserIdService } from "../Services/user.services.js";
-import {
+const { getUserByUserIdService } = require("../Services/user.services.js");
+const {
   createTodoService,
   getTodoByIdService,
   getTodosService,
   updateTodoService,
   deleteTodoService,
   getTodosByUserIdService,
-} from "../Services/todo.services.js";
+} = require("../Services/todo.services.js");
 
-//CREATE LIST
-export const createTodo = async (req, res) => {
+// CREATE LIST
+const createTodo = async (req, res) => {
   const { task } = req.body;
   const userId = req.userId;
   try {
@@ -24,8 +24,8 @@ export const createTodo = async (req, res) => {
   }
 };
 
-//SHOW TODOS
-export const getTodos = async (req, res) => {
+// SHOW TODOS
+const getTodos = async (req, res) => {
   try {
     const todos = await getTodosService();
     return res.status(200).json(todos);
@@ -34,8 +34,8 @@ export const getTodos = async (req, res) => {
   }
 };
 
-//SHOW SINGLE TODO
-export const getTodoById = async (req, res) => {
+// SHOW SINGLE TODO
+const getTodoById = async (req, res) => {
   const id = req.params.id;
 
   try {
@@ -50,9 +50,8 @@ export const getTodoById = async (req, res) => {
 };
 
 // SHOW TODOS FOR A SINGLE USER
-export const getTodosByUserId = async (req, res) => {
+const getTodosByUserId = async (req, res) => {
   const userId = req.userId;
-  // console.log(userId);
   try {
     const todos = await getTodosByUserIdService(userId);
     return res.status(200).json({ data: todos });
@@ -61,12 +60,10 @@ export const getTodosByUserId = async (req, res) => {
   }
 };
 
-//UPDATE TODO
-export const updateTodo = async (req, res) => {
+// UPDATE TODO
+const updateTodo = async (req, res) => {
   const id = req.params.id;
-  console.log(id);
   const { status } = req.body;
-  console.log(status);
 
   try {
     const updatedTodo = await updateTodoService(id, status);
@@ -76,8 +73,8 @@ export const updateTodo = async (req, res) => {
   }
 };
 
-//DELETE SINGLE TODO
-export const deleteTodo = async (req, res) => {
+// DELETE SINGLE TODO
+const deleteTodo = async (req, res) => {
   const id = req.params.id;
 
   try {
@@ -86,4 +83,13 @@ export const deleteTodo = async (req, res) => {
   } catch (error) {
     return res.status(500).json({ error: "Internal Server Error" });
   }
+};
+
+module.exports = {
+  createTodo,
+  getTodos,
+  getTodoById,
+  getTodosByUserId,
+  updateTodo,
+  deleteTodo,
 };

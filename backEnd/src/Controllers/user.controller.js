@@ -1,17 +1,16 @@
-import { compareSync } from "bcrypt";
-import {
+const bcrypt = require("bcrypt");
+const {
   getUserByEmailService,
-  getUserByUserIdService,
   signUpService,
-} from "../Services/user.services.js";
-import pkg from "jsonwebtoken";
-import { PrismaClient } from "@prisma/client";
+} = require("../Services/user.services.js");
+const jwt = require("jsonwebtoken");
+const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
 
-const { sign } = pkg;
+const { sign } = jwt;
 
-export const signUp = async (req, res) => {
+exports.signUp = async (req, res) => {
   try {
     const { email, name, password } = req.body;
 
@@ -36,7 +35,7 @@ export const signUp = async (req, res) => {
       message: "User created successfully",
     });
   } catch (error) {
-    console.error("error user cannot e created", error);
+    console.error("error user cannot be created", error);
     return res.status(500).json({
       success: 0,
       message: "Internal Server Error",
@@ -44,7 +43,7 @@ export const signUp = async (req, res) => {
   }
 };
 
-export const signIn = async (req, res) => {
+exports.signIn = async (req, res) => {
   try {
     const body = req.body;
 
@@ -65,7 +64,10 @@ export const signIn = async (req, res) => {
       });
     }
 
-    const isPasswordMatch = compareSync(body.password, userExists.password);
+    const isPasswordMatch = bcrypt.compareSync(
+      body.password,
+      userExists.password
+    );
 
     if (isPasswordMatch) {
       userExists.password = undefined;

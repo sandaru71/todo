@@ -1,8 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
 
-export const signupQuery = async (email, name, password) => {
+const signupQuery = async (email, name, password) => {
   return prisma.user.create({
     data: {
       email: email,
@@ -12,7 +12,7 @@ export const signupQuery = async (email, name, password) => {
   });
 };
 
-export const getUserByUserIdQuery = async (Id) => {
+const getUserByUserIdQuery = async (Id) => {
   return prisma.user.findUnique({
     where: {
       id: Id,
@@ -20,10 +20,16 @@ export const getUserByUserIdQuery = async (Id) => {
   });
 };
 
-export const getUserByEmailQuery = async (email) => {
+const getUserByEmailQuery = async (email) => {
   return prisma.user.findUnique({
     where: {
       email: email,
     },
   });
+};
+
+module.exports = {
+  signupQuery,
+  getUserByUserIdQuery,
+  getUserByEmailQuery,
 };
