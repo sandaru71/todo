@@ -1,4 +1,3 @@
-const { getTodoByIdQuery } = require("../../Infrastructure/todo.queries");
 const {
   getTodosService,
   getTodoByIdService,
@@ -7,6 +6,15 @@ const {
   deleteTodoService,
   createTodoService,
 } = require("../../Services/todo.services");
+
+const {
+  createTodoQuery,
+  getTodosQuery,
+  getTodosByUserIdQuery,
+  getTodoByIdQuery,
+  updateTodoQuery,
+  deleteTodoQuery,
+} = require("../../Infrastructure/todo.queries");
 
 jest.mock("../../Infrastructure/todo.queries.js", () => ({
   createTodoQuery: jest.fn().mockResolvedValue({
@@ -80,6 +88,16 @@ describe("Todo Service", () => {
       status: false,
       userId: "ef0b1d16-31b1-4af1-b035-3655d08e0959",
     });
+  });
+
+  it("should throw an error when createTodoQuery fails", async () => {
+    const task = "Buy groceries";
+    const userId = "user123";
+    const mockError = new Error("Database error");
+
+    createTodoQuery.mockRejectedValueOnce(mockError);
+
+    await expect(createTodoService(task, userId)).rejects.toThrow(mockError);
   });
 
   it("should get all todos", async () => {

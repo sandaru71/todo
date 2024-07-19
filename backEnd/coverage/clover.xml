@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1721365952618" clover="3.2.0">
-  <project timestamp="1721365952618" name="All files">
-    <metrics statements="112" coveredstatements="92" conditionals="4" coveredconditionals="4" methods="18" coveredmethods="18" elements="134" coveredelements="114" complexity="0" loc="112" ncloc="112" packages="3" files="3" classes="3"/>
+<coverage generated="1721368313904" clover="3.2.0">
+  <project timestamp="1721368313905" name="All files">
+    <metrics statements="176" coveredstatements="153" conditionals="19" coveredconditionals="19" methods="26" coveredmethods="26" elements="221" coveredelements="198" complexity="0" loc="176" ncloc="176" packages="3" files="6" classes="6"/>
     <package name="Controllers">
-      <metrics statements="44" coveredstatements="38" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="6"/>
+      <metrics statements="79" coveredstatements="69" conditionals="19" coveredconditionals="19" methods="8" coveredmethods="8"/>
       <file name="todo.controller.js" path="C:\Users\Sandaru\Desktop\todo\backEnd\src\Controllers\todo.controller.js">
         <metrics statements="44" coveredstatements="38" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="6"/>
         <line num="1" count="1" type="stmt"/>
@@ -51,9 +51,47 @@
         <line num="84" count="0" type="stmt"/>
         <line num="88" count="1" type="stmt"/>
       </file>
+      <file name="user.controller.js" path="C:\Users\Sandaru\Desktop\todo\backEnd\src\Controllers\user.controller.js">
+        <metrics statements="35" coveredstatements="31" conditionals="15" coveredconditionals="15" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="17" count="3" type="cond" truecount="5" falsecount="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="47" count="4" type="stmt"/>
+        <line num="48" count="4" type="stmt"/>
+        <line num="50" count="4" type="stmt"/>
+        <line num="52" count="4" type="cond" truecount="4" falsecount="0"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="59" count="3" type="stmt"/>
+        <line num="60" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="67" count="2" type="stmt"/>
+        <line num="72" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="73" count="1" type="stmt"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="80" count="1" type="stmt"/>
+        <line num="87" count="1" type="stmt"/>
+        <line num="93" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+      </file>
     </package>
     <package name="Infrastructure">
-      <metrics statements="35" coveredstatements="28" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
+      <metrics statements="44" coveredstatements="37" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="9"/>
       <file name="todo.queries.js" path="C:\Users\Sandaru\Desktop\todo\backEnd\src\Infrastructure\todo.queries.js">
         <metrics statements="35" coveredstatements="28" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
         <line num="1" count="1" type="stmt"/>
@@ -92,17 +130,29 @@
         <line num="83" count="0" type="stmt"/>
         <line num="87" count="1" type="stmt"/>
       </file>
+      <file name="user.queries.js" path="C:\Users\Sandaru\Desktop\todo\backEnd\src\Infrastructure\user.queries.js">
+        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+      </file>
     </package>
     <package name="Services">
-      <metrics statements="33" coveredstatements="26" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
+      <metrics statements="53" coveredstatements="47" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="9"/>
       <file name="todo.services.js" path="C:\Users\Sandaru\Desktop\todo\backEnd\src\Services\todo.services.js">
-        <metrics statements="33" coveredstatements="26" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
+        <metrics statements="33" coveredstatements="27" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
         <line num="8" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
@@ -130,6 +180,29 @@
         <line num="59" count="1" type="stmt"/>
         <line num="61" count="0" type="stmt"/>
         <line num="65" count="1" type="stmt"/>
+      </file>
+      <file name="user.services.js" path="C:\Users\Sandaru\Desktop\todo\backEnd\src\Services\user.services.js">
+        <metrics statements="20" coveredstatements="20" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
       </file>
     </package>
   </project>
